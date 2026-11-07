@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kenali Melodi — Tarannum Bayyati Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="index.html"><img src="img/mosque.svg" alt="" /><span>Tarannum Bayyati<br />Learning Hub</span></a>
+      <nav class="nav" aria-label="Menu utama">
+        <a href="index.html">Home</a>
+        <a href="pengenalan.html">Pengenalan</a>
+        <a href="kenali-melodi.html" aria-current="page">Kenali Melodi</a>
+        <a href="aktiviti.html">Aktiviti</a>
+        <a href="latihan.html">Latihan</a>
+      </nav>
+      <a class="home-btn" href="index.html" aria-label="Laman utama">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="stage">
+    <img class="deco deco--leaves-tl" src="img/leaves.svg" alt="" />
+    <img class="deco deco--flowers-tr" src="img/flowers.svg" alt="" />
+    <img class="deco deco--flowers-bl" src="img/flowers.svg" alt="" />
+    <img class="deco deco--leaves-r" src="img/leaves.svg" alt="" />
+
+    <div class="wrap">
+      <div class="title-pill">
+        <img class="icon" src="img/headphones.svg" alt="" />
+        <h1>Kenali Melodi Bayyati</h1>
+      </div>
+      <p class="subtitle-pill">Perhatikan ayat al-Quran berikut dan dengar audio bacaan.</p>
+
+      <div class="ayat">
+        <p lang="ar">
+          <span class="w w--1">إِنَّ</span>
+          <span class="w w--2">اللَّهَ</span>
+          <span class="w w--3">مَعَ</span>
+          <span class="w w--4">الصَّابِرِينَ</span>
+        </p>
+      </div>
+
+      <div class="melodi__player">
+        <!-- TODO: put your audio file at audio/ayat-bayyati.mp3 -->
+        <div class="player player--grey" data-src="audio/ayat-bayyati.mp3"></div>
+      </div>
+
+      <aside class="card note">
+        <span class="emoji" aria-hidden="true">💡</span>
+        <div>
+          <strong>Nota:</strong>
+          <p>Melodi Bayyati mempunyai alunan yang lembut dan seimbang.</p>
+        </div>
+      </aside>
+
+      <div class="page-actions page-actions--right">
+        <a class="btn" href="aktiviti.html">Seterusnya
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

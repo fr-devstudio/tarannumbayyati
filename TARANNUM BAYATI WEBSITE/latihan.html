@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Latihan — Tarannum Bayyati Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="index.html"><img src="img/mosque.svg" alt="" /><span>Tarannum Bayyati<br />Learning Hub</span></a>
+      <nav class="nav" aria-label="Menu utama">
+        <a href="index.html">Home</a>
+        <a href="pengenalan.html">Pengenalan</a>
+        <a href="kenali-melodi.html">Kenali Melodi</a>
+        <a href="aktiviti.html">Aktiviti</a>
+        <a href="latihan.html" aria-current="page">Latihan</a>
+      </nav>
+      <a class="home-btn" href="index.html" aria-label="Laman utama">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="stage">
+    <img class="deco deco--flowers-tr" src="img/flowers.svg" alt="" />
+    <span class="sparkle" style="top:40px;left:20%">✦</span>
+    <span class="sparkle" style="top:130px;right:22%">✦</span>
+
+    <div class="wrap">
+      <div class="title-pill">
+        <span class="emoji" aria-hidden="true">🏆</span>
+        <h1>Latihan Pengukuhan</h1>
+      </div>
+      <p class="subtitle-pill">Jom uji kemahiran anda dengan beberapa soalan berikut!</p>
+
+      <div class="latihan">
+        <div class="latihan__qs">
+          <!-- TODO: set data-answer to "bayyati" or "bukan" for this audio -->
+          <section class="card quiz-instant" data-answer="bayyati">
+            <p class="question"><span class="q-num">1</span> Dengar audio berikut dan pilih jawapan yang betul.</p>
+            <!-- TODO: put your audio file at audio/latihan-1.mp3 -->
+            <div class="player player--grey" data-src="audio/latihan-1.mp3"></div>
+            <h3>Audio ini mempunyai melodi:</h3>
+            <ul class="options">
+              <li><label><input type="radio" name="latihan1" value="bayyati" /> Bayyati</label></li>
+              <li><label><input type="radio" name="latihan1" value="bukan" /> Bukan Bayyati</label></li>
+            </ul>
+            <p class="feedback" aria-live="polite"></p>
+          </section>
+
+          <!-- TODO: set data-answer to "A" or "B" -->
+          <section class="card quiz-buttons" data-answer="A">
+            <p class="question"><span class="q-num">2</span> Audio manakah yang mempunyai melodi Bayyati?</p>
+            <div class="choice-row">
+              <button type="button" class="choice-btn" data-value="A" aria-pressed="false"><img src="img/headphones.svg" alt="" /> Audio A</button>
+              <button type="button" class="choice-btn" data-value="B" aria-pressed="false"><img src="img/headphones.svg" alt="" /> Audio B</button>
+            </div>
+            <p class="feedback" aria-live="polite"></p>
+          </section>
+        </div>
+
+        <aside class="latihan__side" aria-hidden="true">
+          <span class="latihan__heart">♡</span>
+          <div class="bubble">Teruskan belajar dengan semangat!</div>
+          <div class="latihan__scene">
+            <img class="sky" src="img/skyline.svg" alt="" />
+            <img class="book" src="img/quran-rehal.svg" alt="" />
+          </div>
+        </aside>
+      </div>
+
+      <div class="page-actions page-actions--right">
+        <a class="btn" href="index.html">Kembali ke Utama
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

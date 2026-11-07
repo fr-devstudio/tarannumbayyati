@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360">
+  <defs>
+    <linearGradient id="dome" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a9c6a2"/>
+      <stop offset="1" stop-color="#6f9470"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbf5ec"/>
+      <stop offset="1" stop-color="#efe3d1"/>
+    </linearGradient>
+  </defs>
+  <!-- left minaret -->
+  <rect x="14" y="110" width="30" height="240" fill="url(#wall)" stroke="#dccdb6"/>
+  <rect x="10" y="150" width="38" height="8" rx="2" fill="#e6d8c2"/>
+  <rect x="10" y="230" width="38" height="8" rx="2" fill="#e6d8c2"/>
+  <path d="M14 112 Q14 82 29 72 Q44 82 44 112 Z" fill="url(#dome)"/>
+  <line x1="29" y1="72" x2="29" y2="56" stroke="#c99a3b" stroke-width="2"/>
+  <path d="M32 50a6 6 0 1 1-6-6 4.5 4.5 0 1 0 6 6z" fill="#c99a3b"/>
+  <path d="M22 200v-14a7 7 0 0 1 14 0v14z" fill="#6f9470"/>
+  <!-- right minaret -->
+  <rect x="256" y="150" width="26" height="200" fill="url(#wall)" stroke="#dccdb6"/>
+  <rect x="252" y="185" width="34" height="7" rx="2" fill="#e6d8c2"/>
+  <path d="M256 152 Q256 126 269 118 Q282 126 282 152 Z" fill="url(#dome)"/>
+  <line x1="269" y1="118" x2="269" y2="104" stroke="#c99a3b" stroke-width="2"/>
+  <circle cx="269" cy="101" r="3" fill="#c99a3b"/>
+  <!-- main building -->
+  <rect x="48" y="190" width="208" height="160" fill="url(#wall)" stroke="#dccdb6"/>
+  <rect x="44" y="184" width="216" height="10" rx="3" fill="#e6d8c2"/>
+  <!-- side domes -->
+  <rect x="58" y="160" width="50" height="26" fill="url(#wall)" stroke="#dccdb6"/>
+  <path d="M58 162 Q58 124 83 116 Q108 124 108 162 Z" fill="url(#dome)"/>
+  <rect x="196" y="160" width="50" height="26" fill="url(#wall)" stroke="#dccdb6"/>
+  <path d="M196 162 Q196 124 221 116 Q246 124 246 162 Z" fill="url(#dome)"/>
+  <!-- main dome -->
+  <rect x="98" y="138" width="104" height="48" fill="url(#wall)" stroke="#dccdb6"/>
+  <path d="M94 142 Q92 64 150 40 Q208 64 206 142 Z" fill="url(#dome)"/>
+  <path d="M120 70 Q132 52 150 46" stroke="#cfe2c9" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/>
+  <line x1="150" y1="40" x2="150" y2="18" stroke="#c99a3b" stroke-width="2.5"/>
+  <path d="M155 12a8 8 0 1 1-8-8 6 6 0 1 0 8 8z" fill="#c99a3b"/>
+  <!-- drum windows -->
+  <path d="M112 180v-18a6 6 0 0 1 12 0v18z" fill="#6f9470"/>
+  <path d="M144 180v-18a6 6 0 0 1 12 0v18z" fill="#6f9470"/>
+  <path d="M176 180v-18a6 6 0 0 1 12 0v18z" fill="#6f9470"/>
+  <!-- door + windows -->
+  <path d="M124 350v-70a26 26 0 0 1 52 0v70z" fill="#6f9470"/>
+  <path d="M130 350v-68a20 20 0 0 1 40 0v68z" fill="#5d8360"/>
+  <path d="M70 290v-36a12 12 0 0 1 24 0v36z" fill="#6f9470"/>
+  <path d="M206 290v-36a12 12 0 0 1 24 0v36z" fill="#6f9470"/>
+  <path d="M70 336v-16a12 12 0 0 1 24 0v16z" fill="#8fae8b"/>
+  <path d="M206 336v-16a12 12 0 0 1 24 0v16z" fill="#8fae8b"/>
+  <rect x="40" y="348" width="250" height="8" rx="3" fill="#e6d8c2"/>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 150">
+  <defs>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b07a48"/>
+      <stop offset="1" stop-color="#7d5130"/>
+    </linearGradient>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fffaf0"/>
+      <stop offset="1" stop-color="#efe2c8"/>
+    </linearGradient>
+    <linearGradient id="page2" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0" stop-color="#fffaf0"/>
+      <stop offset="1" stop-color="#efe2c8"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="110" cy="142" rx="86" ry="6" fill="#000" opacity=".08"/>
+  <!-- rehal (X stand) -->
+  <path d="M38 140 L150 64 L162 72 L52 142 Z" fill="url(#wood)"/>
+  <path d="M182 140 L70 64 L58 72 L168 142 Z" fill="url(#wood)"/>
+  <path d="M100 98 h20 l-10 8 z" fill="#5f3c22" opacity=".5"/>
+  <!-- book cover -->
+  <path d="M110 92 Q66 72 18 76 L22 102 Q68 98 110 116 Q152 98 198 102 L202 76 Q154 72 110 92 Z" fill="#8a3b2e"/>
+  <!-- pages -->
+  <path d="M110 88 Q70 64 26 68 L28 96 Q70 92 110 110 Z" fill="url(#page)"/>
+  <path d="M110 88 Q150 64 194 68 L192 96 Q150 92 110 110 Z" fill="url(#page2)"/>
+  <!-- text lines -->
+  <g stroke="#b9a37c" stroke-width="1.4" stroke-linecap="round" opacity=".8">
+    <path d="M40 75 Q72 73 100 86"/><path d="M40 81 Q72 79 100 92"/><path d="M40 87 Q72 85 100 98"/>
+    <path d="M180 75 Q148 73 120 86"/><path d="M180 81 Q148 79 120 92"/><path d="M180 87 Q148 85 120 98"/>
+  </g>
+  <line x1="110" y1="88" x2="110" y2="110" stroke="#cdb68e" stroke-width="1.5"/>
+</svg>

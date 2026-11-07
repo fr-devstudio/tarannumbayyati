@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aktiviti — Tarannum Bayyati Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="index.html"><img src="img/mosque.svg" alt="" /><span>Tarannum Bayyati<br />Learning Hub</span></a>
+      <nav class="nav" aria-label="Menu utama">
+        <a href="index.html">Home</a>
+        <a href="pengenalan.html">Pengenalan</a>
+        <a href="kenali-melodi.html">Kenali Melodi</a>
+        <a href="aktiviti.html" aria-current="page">Aktiviti</a>
+        <a href="latihan.html">Latihan</a>
+      </nav>
+      <a class="home-btn" href="index.html" aria-label="Laman utama">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="stage">
+    <img class="deco deco--flowers-bl" src="img/flowers.svg" alt="" />
+    <img class="deco deco--flowers-br" src="img/flowers.svg" alt="" />
+
+    <div class="wrap">
+      <div class="aktiviti-head">
+        <span class="head-deco notes" aria-hidden="true">♫</span>
+        <div class="title-pill">
+          <span class="emoji" aria-hidden="true">🎵</span>
+          <h1>Aktiviti: Perbandingan Audio</h1>
+        </div>
+        <img class="head-deco phones" src="img/headphones.svg" alt="" />
+      </div>
+      <p class="subtitle-pill">Dengar kedua-dua audio dengan teliti. Kenal pasti audio yang mempunyai melodi Tarannum Bayyati.</p>
+
+      <div class="audio-cards">
+        <section class="audio-card audio-card--a">
+          <h2>Audio A</h2>
+          <div class="audio-card__body">
+            <img src="img/headphones.svg" alt="" />
+            <h3>Bacaan Al-Quran A</h3>
+            <!-- TODO: put your audio file at audio/audio-a.mp3 -->
+            <div class="player" data-src="audio/audio-a.mp3"></div>
+          </div>
+        </section>
+        <section class="audio-card audio-card--b">
+          <h2>Audio B</h2>
+          <div class="audio-card__body">
+            <img src="img/headphones.svg" alt="" />
+            <h3>Bacaan Al-Quran B</h3>
+            <!-- TODO: put your audio file at audio/audio-b.mp3 -->
+            <div class="player" data-src="audio/audio-b.mp3"></div>
+          </div>
+        </section>
+      </div>
+
+      <!-- TODO: set data-answer to the correct audio ("A" or "B") -->
+      <form class="aktiviti-q quiz-check" data-answer="A">
+        <p class="question"><span class="q-help" aria-hidden="true">?</span> Audio manakah yang mempunyai melodi Tarannum Bayyati?</p>
+        <ul class="options">
+          <li><label><input type="radio" name="aktiviti" value="A" /> Audio A</label></li>
+          <li><label><input type="radio" name="aktiviti" value="B" /> Audio B</label></li>
+        </ul>
+        <p class="feedback" aria-live="polite"></p>
+        <div class="page-actions page-actions--center">
+          <button class="btn" type="submit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+            Semak Jawapan
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

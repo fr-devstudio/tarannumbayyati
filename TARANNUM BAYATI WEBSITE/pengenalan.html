@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pengenalan — Tarannum Bayyati Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="index.html"><img src="img/mosque.svg" alt="" /><span>Tarannum Bayyati<br />Learning Hub</span></a>
+      <nav class="nav" aria-label="Menu utama">
+        <a href="index.html">Home</a>
+        <a href="pengenalan.html" aria-current="page">Pengenalan</a>
+        <a href="kenali-melodi.html">Kenali Melodi</a>
+        <a href="aktiviti.html">Aktiviti</a>
+        <a href="latihan.html">Latihan</a>
+      </nav>
+      <a class="home-btn" href="index.html" aria-label="Laman utama">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="stage">
+    <img class="deco deco--flowers-tr" src="img/flowers.svg" alt="" />
+    <img class="deco deco--flowers-br" src="img/flowers.svg" alt="" />
+    <img class="deco deco--leaves-l" src="img/leaves.svg" alt="" />
+    <span class="sparkle" style="top:40px;left:16%">✦</span>
+    <span class="sparkle" style="top:150px;left:52%">✦</span>
+
+    <div class="wrap">
+      <div class="title-pill">
+        <img class="icon" src="img/quran-rehal.svg" alt="" />
+        <h1>Pengenalan Tarannum Bayyati</h1>
+      </div>
+
+      <div class="intro">
+        <div class="intro__cards">
+          <section class="card">
+            <span class="label-pill">Maksud</span>
+            <p>Tarannum Bayyati ialah salah satu melodi bacaan al-Quran yang lembut, tenang dan penuh penghayatan.</p>
+          </section>
+          <section class="card">
+            <span class="label-pill">Ciri-ciri Melodi Bayyati</span>
+            <ul class="check-list">
+              <li>Alunan yang tenang dan stabil</li>
+              <li>Sedikit naik dan turun secara halus</li>
+              <li>Memberi kesan syahdu</li>
+            </ul>
+          </section>
+        </div>
+
+        <!-- Replace img/masjid-interior.svg with your own photo (e.g. img/masjid.jpg) if you have one -->
+        <div class="arch">
+          <img src="img/masjid-interior.svg" alt="Al-Quran di atas rehal di dalam masjid" />
+          <img class="arch__book" src="img/quran-rehal.svg" alt="" />
+        </div>
+      </div>
+
+      <div class="intro__player">
+        <!-- TODO: put your audio file at audio/contoh-bayyati.mp3 -->
+        <div class="player player--green" data-src="audio/contoh-bayyati.mp3" data-label="Contoh Bacaan Bayyati"></div>
+      </div>
+
+      <div class="page-actions">
+        <a class="btn" href="kenali-melodi.html">Seterusnya
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
