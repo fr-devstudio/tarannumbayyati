@@ -90,6 +90,24 @@
     });
   });
 
+  /* ---------------- Falling petals ---------------- */
+  const stage = document.querySelector(".stage");
+  const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (stage && !calm) {
+    for (let i = 0; i < 9; i++) {
+      const p = document.createElement("span");
+      p.className = "petal";
+      p.setAttribute("aria-hidden", "true");
+      p.style.left = Math.round(Math.random() * 96) + "%";
+      p.style.animationDuration = (11 + Math.random() * 9).toFixed(1) + "s";
+      p.style.animationDelay = (-Math.random() * 18).toFixed(1) + "s";
+      const s = 0.7 + Math.random() * 0.6;
+      p.style.width = (12 * s).toFixed(1) + "px";
+      p.style.height = (10 * s).toFixed(1) + "px";
+      stage.appendChild(p);
+    }
+  }
+
   /* ---------------- Quiz helpers ---------------- */
   const showFeedback = (box, correct) => {
     box.textContent = correct

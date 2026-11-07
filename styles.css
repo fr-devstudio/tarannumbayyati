@@ -83,12 +83,31 @@ button { font: inherit; }
 
 /* decorative images */
 .deco { position: absolute; z-index: 1; pointer-events: none; user-select: none; }
-.deco--flowers-tr { top: 10px; right: -10px; width: 150px; transform: scaleX(-1); }
-.deco--flowers-bl { bottom: -6px; left: -6px; width: 170px; transform: rotate(0deg); }
-.deco--flowers-br { bottom: -6px; right: -6px; width: 160px; transform: scaleX(-1); }
-.deco--leaves-l { left: 10px; bottom: 40px; width: 60px; }
-.deco--leaves-r { right: 14px; top: 40%; width: 56px; transform: scaleX(-1); }
-.deco--leaves-tl { left: 14px; top: 24px; width: 54px; transform: rotate(-20deg); }
+/* Flowers sit fully inside their corner and sway from the stem base */
+.deco--flowers-tr { top: 0; right: 0; width: 150px; transform-origin: 94% 3%; animation: sway-flower 6s ease-in-out infinite; }
+.deco--flowers-bl { bottom: 0; left: 0; width: 170px; transform-origin: 6% 97%; animation: sway-flower 7s ease-in-out infinite -2s; }
+.deco--flowers-br { bottom: 0; right: 0; width: 160px; transform-origin: 94% 97%; animation: sway-flower-rev 6.5s ease-in-out infinite -1s; }
+.deco--leaves-l { left: 10px; bottom: 40px; width: 60px; transform-origin: 50% 100%; animation: sway-leaf 5s ease-in-out infinite; }
+.deco--leaves-r { right: 14px; top: 40%; width: 56px; scale: -1 1; transform-origin: 50% 100%; animation: sway-leaf 5.5s ease-in-out infinite -1.5s; }
+.deco--leaves-tl { left: 14px; top: 24px; width: 54px; rotate: -20deg; transform-origin: 50% 100%; animation: sway-leaf 6s ease-in-out infinite -3s; }
+@keyframes sway-flower { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(4deg); } }
+@keyframes sway-flower-rev { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-4deg); } }
+@keyframes sway-leaf { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+
+/* Falling petals (created by script.js) */
+.petal {
+  position: absolute; top: -24px; z-index: 1; pointer-events: none;
+  width: 12px; height: 10px; border-radius: 80% 0 80% 0;
+  background: linear-gradient(135deg, #f9c4d4, #f19ab6); opacity: .75;
+  animation: petal-fall linear infinite;
+}
+@keyframes petal-fall {
+  0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  10%  { opacity: .75; }
+  50%  { transform: translate(40px, 50vh) rotate(200deg); }
+  90%  { opacity: .6; }
+  100% { transform: translate(-20px, 105vh) rotate(420deg); opacity: 0; }
+}
 .sparkle { position: absolute; color: var(--gold); font-size: 1.3rem; z-index: 1; pointer-events: none; }
 
 /* ---------------- Shared components ---------------- */
@@ -323,8 +342,49 @@ button { font: inherit; }
 .latihan__scene .sky { width: 100%; opacity: .9; }
 .latihan__scene .book { position: absolute; left: 50%; bottom: -10px; width: 78%; transform: translateX(-50%); }
 
+/* ===========================================================
+   PAGE — TEKNIK HURUF
+   =========================================================== */
+.manual, .chart { position: relative; margin-top: 30px; }
+.steps { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 4px; }
+.steps li { position: relative; display: flex; gap: 16px; padding: 10px 0; }
+.steps li:not(:last-child)::after {
+  content: ""; position: absolute; left: 17px; top: 48px; bottom: -6px; width: 2px;
+  background: repeating-linear-gradient(to bottom, var(--pink-300) 0 5px, transparent 5px 10px);
+}
+.steps__num {
+  flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--green-500); color: #fff; font-weight: 800; box-shadow: 0 0 0 5px var(--green-100);
+}
+.steps h3 { margin: 4px 0 2px; font-size: 1.05rem; font-weight: 800; color: var(--green-900); }
+.steps p { margin: 0; color: var(--muted); }
+
+.chart__link { display: block; border-radius: 16px; overflow: hidden; border: 3px solid var(--pink-200); }
+.chart__link img { width: 100%; height: auto; transition: transform .4s; }
+.chart__link:hover img { transform: scale(1.02); }
+.chart__link:focus-visible { outline: 3px solid var(--green-500); outline-offset: 3px; }
+.chart__hint { margin: 10px 0 0; font-size: .88rem; color: var(--muted); text-align: center; }
+
+.teknik-audio { margin-top: 36px; }
+.section-title { text-align: center; font-family: var(--font-title); font-weight: 600; font-size: 1.6rem; color: var(--green-900); margin: 0 0 18px; }
+.teknik-audio__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.audio-tile {
+  background: rgba(255,255,255,.85); border: 1px solid var(--pink-200); border-radius: var(--radius);
+  padding: 18px; box-shadow: var(--shadow); display: grid; gap: 12px; align-content: start;
+  grid-template-columns: minmax(0, 1fr);
+}
+.audio-tile h3 { margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--green-900); text-align: center; }
+.audio-tile .player { width: 100%; gap: 8px; padding-right: 10px; }
+.audio-tile .player__bar { min-width: 30px; }
+.audio-tile .player__icon { padding: 2px; }
+.audio-tile--featured { grid-column: 1 / -1; background: var(--green-50); border-color: var(--green-200); justify-items: center; }
+.audio-tile--featured .player { width: min(460px, 100%); }
+.audio-tile__ar { margin: 0; font-family: var(--font-arabic); font-size: 1.7rem; color: var(--green-700); }
+
 /* ---------------- Reduced motion ---------------- */
 @media (prefers-reduced-motion: reduce) {
+  .deco, .petal { animation: none !important; }
+  .petal { display: none; }
   .home__lantern { animation: none; }
   .btn, .choice-btn { transition: none; }
 }
@@ -339,6 +399,7 @@ button { font: inherit; }
   .latihan__side { grid-template-columns: auto 1fr; align-items: end; }
   .bubble { justify-self: start; }
   .deco--leaves-r { display: none; }
+  .teknik-audio__grid { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 760px) {

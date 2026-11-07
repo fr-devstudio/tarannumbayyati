@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teknik Huruf — Tarannum Bayyati Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="index.html"><img src="img/mosque.svg" alt="" /><span>Tarannum Bayyati<br />Learning Hub</span></a>
+      <nav class="nav" aria-label="Menu utama">
+        <a href="index.html">Home</a>
+        <a href="pengenalan.html">Pengenalan</a>
+        <a href="teknik-huruf.html" aria-current="page">Teknik Huruf</a>
+        <a href="kenali-melodi.html">Kenali Melodi</a>
+        <a href="aktiviti.html">Aktiviti</a>
+        <a href="latihan.html">Latihan</a>
+      </nav>
+      <a class="home-btn" href="index.html" aria-label="Laman utama">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="stage">
+    <img class="deco deco--flowers-tr" src="img/flowers-tr.svg" alt="" />
+    <img class="deco deco--flowers-bl" src="img/flowers.svg" alt="" />
+    <img class="deco deco--leaves-r" src="img/leaves.svg" alt="" />
+    <span class="sparkle" style="top:46px;left:18%">✦</span>
+
+    <div class="wrap">
+      <div class="title-pill">
+        <span class="emoji" aria-hidden="true">📖</span>
+        <h1>Teknik Huruf Tarannum Bayyati</h1>
+      </div>
+      <p class="subtitle-pill">Ikuti manual di bawah, lihat panduan huruf dan dengar contoh audio.</p>
+
+      <!-- ===== Manual ===== -->
+      <section class="card manual">
+        <span class="label-pill">Manual Penggunaan Teknik Huruf Tarannum Bayyati</span>
+        <ol class="steps">
+          <li>
+            <span class="steps__num">1</span>
+            <div><h3>Kenali Susunan Huruf</h3><p>Pelajari susunan huruf yang mewakili pergerakan melodi Tarannum Bayyati.</p></div>
+          </li>
+          <li>
+            <span class="steps__num">2</span>
+            <div><h3>Dengar Alunan</h3><p>Dengar contoh alunan Bayyati daripada guru dan kenal pasti perubahan nada serta lenggok suara.</p></div>
+          </li>
+          <li>
+            <span class="steps__num">3</span>
+            <div><h3>Padankan Huruf dengan Melodi</h3><p>Sebut atau lihat susunan huruf sambil mengingati pergerakan melodi yang betul.</p></div>
+          </li>
+          <li>
+            <span class="steps__num">4</span>
+            <div><h3>Praktikkan Alunan Bayyati</h3><p>Lagukan ayat al-Quran berpandukan susunan huruf secara berulang kali.</p></div>
+          </li>
+          <li>
+            <span class="steps__num">5</span>
+            <div><h3>Uji Ingatan</h3><p>Lagukan Bayyati tanpa melihat panduan huruf untuk menguji penguasaan melodi secara kendiri.</p></div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ===== Gambar teknik huruf ===== -->
+      <section class="card chart">
+        <span class="label-pill">Panduan Teknik Huruf Bayyati</span>
+        <a class="chart__link" href="img/TEKNIK%20HURUF%20BAYYATI.jpg" target="_blank" rel="noopener">
+          <img src="img/TEKNIK%20HURUF%20BAYYATI.jpg" alt="Jadual teknik huruf Tarannum Bayyati (Qa'idah at-Tarannum al-Bayati), baris 1 hingga 7" loading="lazy" />
+        </a>
+        <p class="chart__hint">🔍 Klik gambar untuk lihat saiz penuh.</p>
+      </section>
+
+      <!-- ===== Audio ===== -->
+      <section class="teknik-audio">
+        <h2 class="section-title">🎧 Dengar &amp; Ikut</h2>
+        <div class="teknik-audio__grid">
+          <article class="audio-tile audio-tile--featured">
+            <h3>Ta'awuz &amp; Basmalah</h3>
+            <p lang="ar" dir="rtl" class="audio-tile__ar">أَعُوذُ بِاللَّهِ · بِسْمِ اللَّهِ</p>
+            <!-- TODO: put the Ta'awuz & Basmalah audio at audio/taawuz-basmalah.mp3 -->
+            <div class="player player--green" data-src="audio/taawuz-basmalah.mp3"></div>
+          </article>
+          <article class="audio-tile">
+            <h3>Bayyati Harkat 1</h3>
+            <div class="player" data-src="audio/bayyati%20harkat%201.mp3"></div>
+          </article>
+          <article class="audio-tile">
+            <h3>Bayyati Harkat 2</h3>
+            <div class="player" data-src="audio/Bayyati%20harkat%202.mp3"></div>
+          </article>
+          <article class="audio-tile">
+            <h3>Bayyati Harkat 3</h3>
+            <div class="player" data-src="audio/Bayyati%20harkat%203.mp3"></div>
+          </article>
+        </div>
+      </section>
+
+      <div class="page-actions page-actions--right">
+        <a class="btn" href="kenali-melodi.html">Seterusnya
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
