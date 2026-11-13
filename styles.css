@@ -279,8 +279,20 @@ button { font: inherit; }
 .w--2 { background: #f9d3df; }
 .w--3 { background: #d9ecd2; }
 .w--4 { background: #dfe1f6; }
-.melodi__player { display: flex; justify-content: center; margin: 26px 0 30px; }
-.melodi__player .player { width: min(420px, 100%); }
+/* Full surah layout */
+.ayat--full { border-radius: 48px; padding: 36px 40px 30px; width: min(900px, 100%); }
+.ayat--full .ayat__surah { font-size: 1.5rem; line-height: 1.4; color: var(--green-700); font-weight: 700; }
+.ayat--full .ayat__basmalah { font-size: clamp(1.7rem, 3.6vw, 2.4rem); line-height: 1.7; margin-bottom: 8px; }
+.ayat--full .ayat__text { font-size: clamp(1.55rem, 3.2vw, 2.25rem); line-height: 2.35; text-align: center; }
+.ayat--full .w {
+  padding: .08em .3em; margin: 0 .05em; border-radius: 14px;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.ayat__no { font-size: .72em; color: #b8862f; white-space: nowrap; }
+.ayat__ref { display: block; margin-top: 4px; font-size: .85rem; font-weight: 700; letter-spacing: .06em; color: var(--muted); }
+.melodi__player { display: flex; justify-content: center; margin: 26px 0 6px; }
+.melodi__player .player { width: min(520px, 100%); }
+.melodi__credit { text-align: center; margin: 0 0 30px; font-size: .85rem; color: var(--muted); }
 .note { display: flex; gap: 12px; background: var(--pink-100); border-color: var(--pink-200); max-width: 560px; }
 .note strong { display: block; }
 .note p { margin: 2px 0 0; }
@@ -423,6 +435,7 @@ button { font: inherit; }
   .audio-cards { grid-template-columns: 1fr; }
   .aktiviti-head .head-deco { display: none; }
   .ayat { border-radius: 44px; padding: 34px 16px; }
+  .ayat--full { border-radius: 32px; padding: 28px 14px 22px; }
   .player__label { display: none; }
   .player { gap: 8px; padding-right: 10px; }
   .player__bar { min-width: 30px; }
