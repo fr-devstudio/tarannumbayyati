@@ -44,16 +44,31 @@
     const muteBtn = el.querySelector(".player__mute");
     const replayBtn = el.querySelector(".player__replay");
 
-    const update = () => {
-      time.textContent = fmt(audio.currentTime) + " / " + fmt(audio.duration);
-      if (audio.duration) bar.value = (audio.currentTime / audio.duration) * 100;
+    // Optional clip range in seconds: data-start / data-end
+    const clipStart = parseFloat(el.dataset.start) || 0;
+    const clipEndAttr = parseFloat(el.dataset.end);
+    const clipEnd = () => {
+      const d = audio.duration;
+      if (!isFinite(d)) return isFinite(clipEndAttr) ? clipEndAttr : 0;
+      return isFinite(clipEndAttr) ? Math.min(clipEndAttr, d) : d;
     };
+    const clipLen = () => Math.max(clipEnd() - clipStart, 0);
 
-    audio.addEventListener("loadedmetadata", update);
-    audio.addEventListener("timeupdate", update);
+    const update = () => {
+      const pos = Math.max(audio.currentTime - clipStart, 0);
+      time.textContent = fmt(pos) + " / " + fmt(clipLen());
+      if (clipLen()) bar.value = Math.min((pos / clipLen()) * 100, 100);
+    };
+    const toStart = () => { audio.currentTime = clipStart; update(); };
+
+    audio.addEventListener("loadedmetadata", () => { if (clipStart) audio.currentTime = clipStart; update(); });
+    audio.addEventListener("timeupdate", () => {
+      if (isFinite(clipEndAttr) && audio.currentTime >= clipEndAttr) { audio.pause(); toStart(); return; }
+      update();
+    });
     audio.addEventListener("play", () => { playBtn.innerHTML = ICONS.pause; playBtn.setAttribute("aria-label", "Jeda audio"); });
     audio.addEventListener("pause", () => { playBtn.innerHTML = ICONS.play; playBtn.setAttribute("aria-label", "Main audio"); });
-    audio.addEventListener("ended", () => { bar.value = 0; });
+    audio.addEventListener("ended", toStart);
     audio.addEventListener("error", () => {
       el.classList.add("is-missing");
       time.textContent = "Tiada audio";
@@ -66,6 +81,7 @@
       if (el.classList.contains("is-missing")) return;
       if (audio.paused) {
         allAudio.forEach((a) => { if (a !== audio) a.pause(); }); // only one plays at a time
+        if (audio.currentTime < clipStart || audio.currentTime >= clipEnd()) audio.currentTime = clipStart;
         audio.play().catch(() => {});
       } else {
         audio.pause();
@@ -73,7 +89,7 @@
     });
 
     bar.addEventListener("input", () => {
-      if (audio.duration) audio.currentTime = (bar.value / 100) * audio.duration;
+      if (clipLen()) audio.currentTime = clipStart + (bar.value / 100) * clipLen();
     });
 
     muteBtn.addEventListener("click", () => {
@@ -84,7 +100,7 @@
 
     replayBtn.addEventListener("click", () => {
       if (el.classList.contains("is-missing")) return;
-      audio.currentTime = 0;
+      audio.currentTime = clipStart;
       allAudio.forEach((a) => { if (a !== audio) a.pause(); });
       audio.play().catch(() => {});
     });
@@ -139,14 +155,38 @@
     );
   });
 
-  // Latihan: choice buttons
-  document.querySelectorAll(".quiz-buttons").forEach((q) => {
+  // Latihan: choice buttons (+ explanation and running score)
+  const quizzes = document.querySelectorAll(".quiz-buttons");
+  const scoreEl = document.getElementById("score");
+  const scoreMsg = document.getElementById("score-msg");
+
+  const updateScore = () => {
+    if (!scoreEl) return;
+    let answered = 0, correct = 0;
+    quizzes.forEach((q) => {
+      const picked = q.querySelector('.choice-btn[aria-pressed="true"]');
+      if (picked) { answered++; if (picked.dataset.value === q.dataset.answer) correct++; }
+    });
+    scoreEl.textContent = correct;
+    if (answered < quizzes.length) {
+      scoreMsg.textContent = "Jawab semua soalan untuk melihat keputusan.";
+    } else if (correct === quizzes.length) {
+      scoreMsg.textContent = "Cemerlang! Anda berjaya mengenal pasti semua melodi Bayyati. 🌸";
+    } else {
+      scoreMsg.textContent = "Bagus! Dengar semula audio dan cuba betulkan jawapan yang salah.";
+    }
+  };
+
+  quizzes.forEach((q) => {
     const box = q.querySelector(".feedback");
     const btns = q.querySelectorAll(".choice-btn");
     btns.forEach((b) =>
       b.addEventListener("click", () => {
         btns.forEach((o) => o.setAttribute("aria-pressed", String(o === b)));
-        showFeedback(box, b.dataset.value === q.dataset.answer);
+        const correct = b.dataset.value === q.dataset.answer;
+        showFeedback(box, correct);
+        if (correct && q.dataset.explain) box.textContent += " " + q.dataset.explain;
+        updateScore();
       })
     );
   });

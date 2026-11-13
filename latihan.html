@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="styles.css?v=6" />
 </head>
 <body>
 
@@ -38,42 +38,93 @@
         <span class="emoji" aria-hidden="true">🏆</span>
         <h1>Latihan Pengukuhan</h1>
       </div>
-      <p class="subtitle-pill">Jom uji kemahiran anda dengan beberapa soalan berikut!</p>
+      <p class="subtitle-pill">Dengar kedua-dua audio dalam setiap soalan, kemudian pilih audio yang mempunyai melodi Tarannum Bayyati.</p>
 
-      <div class="latihan">
-        <div class="latihan__qs">
-          <!-- TODO: set data-answer to "bayyati" or "bukan" for this audio -->
-          <section class="card quiz-instant" data-answer="bayyati">
-            <p class="question"><span class="q-num">1</span> Dengar audio berikut dan pilih jawapan yang betul.</p>
-            <!-- TODO: put your audio file at audio/latihan-1.mp3 -->
-            <div class="player player--grey" data-src="audio/latihan-1.mp3"></div>
-            <h3>Audio ini mempunyai melodi:</h3>
-            <ul class="options">
-              <li><label><input type="radio" name="latihan1" value="bayyati" /> Bayyati</label></li>
-              <li><label><input type="radio" name="latihan1" value="bukan" /> Bukan Bayyati</label></li>
-            </ul>
-            <p class="feedback" aria-live="polite"></p>
-          </section>
-
-          <!-- TODO: set data-answer to "A" or "B" -->
-          <section class="card quiz-buttons" data-answer="A">
-            <p class="question"><span class="q-num">2</span> Audio manakah yang mempunyai melodi Bayyati?</p>
-            <div class="choice-row">
-              <button type="button" class="choice-btn" data-value="A" aria-pressed="false"><img src="img/headphones.svg" alt="" /> Audio A</button>
-              <button type="button" class="choice-btn" data-value="B" aria-pressed="false"><img src="img/headphones.svg" alt="" /> Audio B</button>
+      <!--
+        AUDIO FILES — put them in the audio/ folder with these names:
+          Soalan 1: surah-al-fatihah-tarannum-nahawand-...mp3 (Nahawand)  BAYYATI AL FATIHAH.mp3 (Bayyati)
+          Soalan 2: latihan-2a.mp3 (Bayyati)   latihan-2b.mp3 (Jiharkah)
+          Soalan 3: latihan-3a.mp3 (Hijaz)     latihan-3b.mp3 (Bayyati)
+        data-start / data-end = seconds where the clip starts / stops (leave out = start / end of file)
+      -->
+      <div class="latihan-qs">
+        <!-- Soalan 1 -->
+        <section class="card q-card quiz-buttons" data-answer="B"
+                 data-explain="Audio B ialah Tarannum Bayyati, manakala Audio A ialah Tarannum Nahawand.">
+          <p class="question"><span class="q-num">1</span> Audio manakah yang mempunyai melodi Tarannum Bayyati?</p>
+          <div class="q-audios">
+            <div class="q-audio q-audio--a">
+              <span class="q-audio__tag">Audio A</span>
+              <div class="player" data-src="audio/surah-al-fatihah-tarannum-nahawand-ustaz-husaini-mahmur_0y6aHlm9.mp3"></div>
             </div>
-            <p class="feedback" aria-live="polite"></p>
-          </section>
-        </div>
+            <div class="q-audio q-audio--b">
+              <span class="q-audio__tag">Audio B</span>
+              <div class="player" data-src="audio/BAYYATI%20AL%20FATIHAH.mp3"></div>
+            </div>
+          </div>
+          <div class="choice-row">
+            <button type="button" class="choice-btn" data-value="A" aria-pressed="false"><img src="img/headphones.svg" alt="" /> Audio A</button>
+            <button type="button" class="choice-btn" data-value="B" aria-pressed="false"><img src="img/headphones.svg" alt="" /> Audio B</button>
+          </div>
+          <p class="feedback" aria-live="polite"></p>
+        </section>
 
-        <aside class="latihan__side" aria-hidden="true">
-          <span class="latihan__heart">♡</span>
+        <!-- Soalan 2 -->
+        <section class="card q-card quiz-buttons" data-answer="A"
+                 data-explain="Audio A ialah Tarannum Bayyati, manakala Audio B ialah Tarannum Jiharkah.">
+          <p class="question"><span class="q-num">2</span> Audio manakah yang mempunyai melodi Tarannum Bayyati?</p>
+          <div class="q-audios">
+            <div class="q-audio q-audio--a">
+              <span class="q-audio__tag">Audio A</span>
+              <div class="player" data-src="audio/latihan-2a.mp3" data-start="30" data-end="98"></div>
+            </div>
+            <div class="q-audio q-audio--b">
+              <span class="q-audio__tag">Audio B</span>
+              <div class="player" data-src="audio/latihan-2b.mp3" data-start="12" data-end="21"></div>
+            </div>
+          </div>
+          <div class="choice-row">
+            <button type="button" class="choice-btn" data-value="A" aria-pressed="false"><img src="img/headphones.svg" alt="" /> Audio A</button>
+            <button type="button" class="choice-btn" data-value="B" aria-pressed="false"><img src="img/headphones.svg" alt="" /> Audio B</button>
+          </div>
+          <p class="feedback" aria-live="polite"></p>
+        </section>
+
+        <!-- Soalan 3 -->
+        <section class="card q-card quiz-buttons" data-answer="B"
+                 data-explain="Audio B ialah Tarannum Bayyati, manakala Audio A ialah Tarannum Hijaz.">
+          <p class="question"><span class="q-num">3</span> Audio manakah yang mempunyai melodi Tarannum Bayyati?</p>
+          <div class="q-audios">
+            <div class="q-audio q-audio--a">
+              <span class="q-audio__tag">Audio A</span>
+              <div class="player" data-src="audio/latihan-3a.mp3"></div>
+            </div>
+            <div class="q-audio q-audio--b">
+              <span class="q-audio__tag">Audio B</span>
+              <div class="player" data-src="audio/latihan-3b.mp3" data-start="12" data-end="61"></div>
+            </div>
+          </div>
+          <div class="choice-row">
+            <button type="button" class="choice-btn" data-value="A" aria-pressed="false"><img src="img/headphones.svg" alt="" /> Audio A</button>
+            <button type="button" class="choice-btn" data-value="B" aria-pressed="false"><img src="img/headphones.svg" alt="" /> Audio B</button>
+          </div>
+          <p class="feedback" aria-live="polite"></p>
+        </section>
+      </div>
+
+      <div class="latihan-end">
+        <div class="card score" aria-live="polite">
+          <span class="score__label">Markah anda</span>
+          <span class="score__value"><strong id="score">0</strong> / 3</span>
+          <span class="score__msg" id="score-msg">Jawab semua soalan untuk melihat keputusan.</span>
+        </div>
+        <div class="latihan-end__art" aria-hidden="true">
           <div class="bubble">Teruskan belajar dengan semangat!</div>
           <div class="latihan__scene">
             <img class="sky" src="img/skyline.svg" alt="" />
             <img class="book" src="img/quran-rehal.svg" alt="" />
           </div>
-        </aside>
+        </div>
       </div>
 
       <div class="page-actions page-actions--right">
@@ -84,6 +135,6 @@
     </div>
   </main>
 
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>

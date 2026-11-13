@@ -354,6 +354,29 @@ button { font: inherit; }
 .latihan__scene .sky { width: 100%; opacity: .9; }
 .latihan__scene .book { position: absolute; left: 50%; bottom: -10px; width: 78%; transform: translateX(-50%); }
 
+/* Latihan — 3 comparison questions */
+.latihan-qs { display: grid; gap: 22px; }
+.q-card { padding: 24px 26px; }
+.q-audios { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 16px; }
+.q-audio { border-radius: 18px; overflow: hidden; border: 1px solid var(--pink-200); background: #fff; display: grid; grid-template-columns: minmax(0, 1fr); }
+.q-audio__tag { display: block; padding: 8px 14px; font-weight: 800; text-align: center; color: var(--green-900); }
+.q-audio--a .q-audio__tag { background: var(--green-100); }
+.q-audio--b .q-audio__tag { background: var(--pink-200); }
+.q-audio .player { margin: 12px; box-shadow: none; gap: 8px; padding-right: 10px; }
+.q-audio .player__bar { min-width: 30px; }
+.q-card .choice-row { padding-left: 0; justify-content: center; }
+.q-card .feedback { text-align: center; }
+.q-card .feedback:empty { margin: 0; min-height: 0; }
+
+.latihan-end { display: grid; grid-template-columns: 1fr 280px; gap: 24px; align-items: center; margin-top: 28px; }
+.score { text-align: center; display: grid; gap: 4px; background: var(--peach); border-color: #f6dccb; }
+.score__label { font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: .85rem; color: var(--green-500); }
+.score__value { font-family: var(--font-title); font-size: 2.6rem; color: var(--green-900); line-height: 1.1; }
+.score__value strong { color: var(--pink-500); }
+.score__msg { color: var(--muted); }
+.latihan-end__art { display: grid; justify-items: center; gap: 8px; }
+.latihan-end__art .bubble { justify-self: center; }
+
 /* ===========================================================
    PAGE — TEKNIK HURUF
    =========================================================== */
@@ -420,6 +443,11 @@ button { font: inherit; }
   .bubble { justify-self: start; }
   .deco--leaves-r { display: none; }
   .teknik-audio__grid { grid-template-columns: minmax(0, 1fr); }
+  .latihan-end { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+  .q-audios { grid-template-columns: minmax(0, 1fr); }
+  .q-card { padding: 20px 16px; }
 }
 
 @media (max-width: 760px) {
