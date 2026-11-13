@@ -378,7 +378,15 @@ button { font: inherit; }
 .audio-tile .player__bar { min-width: 30px; }
 .audio-tile .player__icon { padding: 2px; }
 .audio-tile--featured { grid-column: 1 / -1; background: var(--green-50); border-color: var(--green-200); justify-items: center; }
-.audio-tile--featured .player { width: min(460px, 100%); }
+.audio-tile--featured .player { width: 100%; gap: 8px; padding-right: 10px; }
+.audio-tile--featured .player__bar { min-width: 30px; }
+.audio-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; width: 100%; }
+.audio-pair__item {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; justify-items: center; text-align: center;
+  background: rgba(255,255,255,.7); border: 1px solid var(--green-200); border-radius: 18px; padding: 16px;
+}
+.audio-pair__label { margin: 0; font-weight: 800; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; color: var(--green-500); }
+@media (max-width: 760px) { .audio-pair { grid-template-columns: minmax(0, 1fr); } }
 .audio-tile__ar { margin: 0; font-family: var(--font-arabic); font-size: 1.7rem; color: var(--green-700); }
 
 /* ---------------- Reduced motion ---------------- */
