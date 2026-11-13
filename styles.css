@@ -189,6 +189,29 @@ button { font: inherit; }
 .player.is-missing .player__play { background: #b9b0b3; cursor: not-allowed; }
 .player__missing { font-size: .78rem; color: var(--pink-600); }
 
+/* ---------------- Background music button ---------------- */
+.music-toggle {
+  position: fixed; right: 18px; bottom: 18px; z-index: 40;
+  width: 52px; height: 52px; border-radius: 50%; cursor: pointer;
+  display: grid; place-items: center;
+  background: #fff; color: var(--muted); border: 2px solid var(--pink-200);
+  box-shadow: 0 10px 24px -12px rgba(170, 80, 110, .6);
+  transition: transform .2s, background .2s, color .2s;
+}
+.music-toggle:hover { transform: scale(1.06); }
+.music-toggle:focus-visible { outline: 3px solid var(--green-500); outline-offset: 3px; }
+.music-toggle svg { width: 24px; height: 24px; grid-area: 1 / 1; }
+.music-toggle__on { display: none; }
+.music-toggle.is-on { background: var(--pink-500); color: #fff; border-color: var(--pink-500); }
+.music-toggle.is-on .music-toggle__on { display: block; }
+.music-toggle.is-on .music-toggle__off { display: none; }
+.music-toggle.is-playing::after {
+  content: ""; position: absolute; inset: -6px; border-radius: 50%;
+  border: 2px solid var(--pink-300); animation: music-pulse 2s ease-out infinite;
+}
+@keyframes music-pulse { from { transform: scale(.9); opacity: .9; } to { transform: scale(1.25); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .music-toggle.is-playing::after { animation: none; opacity: .6; } }
+
 /* ---------------- Feedback ---------------- */
 .feedback { margin: 14px 0 0; font-weight: 700; min-height: 1.4em; }
 .feedback.is-correct { color: var(--green-500); }

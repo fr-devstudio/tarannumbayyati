@@ -106,6 +106,94 @@
     });
   });
 
+  /* ---------------- Background music ----------------
+     - Loops forever
+     - Pauses while any lesson audio plays, resumes when it stops
+     - Browsers block sound until the visitor interacts, so it starts on the first tap/click
+     - On/off button remembers the choice; position carries over between pages
+  ----------------------------------------------------- */
+  const BG_SRC = "audio/Maher%20Zain%20-%20Huwa%20AlQuran%20Vocal%20Nasheed%20%5BSlowed%2BReverb%5D.mp3";
+  const BG_VOLUME = 0.35;
+
+  const store = {
+    get(k, s) { try { return (s ? sessionStorage : localStorage).getItem(k); } catch (e) { return null; } },
+    set(k, v, s) { try { (s ? sessionStorage : localStorage).setItem(k, v); } catch (e) {} },
+  };
+
+  const bg = new Audio();
+  bg.loop = true;
+  bg.volume = BG_VOLUME;
+  bg.preload = "auto";
+
+  let musicOn = store.get("tb-music") !== "off";
+  const lessonPlaying = () => allAudio.some((a) => !a.paused);
+
+  const toggle = document.createElement("button");
+  toggle.type = "button";
+  toggle.className = "music-toggle";
+  toggle.innerHTML =
+    '<svg class="music-toggle__on" viewBox="0 0 24 24" fill="currentColor"><path d="M9 17.5a3 3 0 1 1-2-2.83V5.5l12-2.5v11.5a3 3 0 1 1-2-2.83V7.1l-8 1.66z"/></svg>' +
+    '<svg class="music-toggle__off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 17.5a3 3 0 1 1-2-2.83V5.5l12-2.5v11.5a3 3 0 1 1-2-2.83V7.1l-8 1.66z" fill="currentColor" stroke="none" opacity=".45"/><path d="M3 3l18 18"/></svg>';
+  document.body.appendChild(toggle);
+
+  const renderToggle = () => {
+    toggle.classList.toggle("is-on", musicOn);
+    toggle.classList.toggle("is-playing", !bg.paused);
+    toggle.setAttribute("aria-pressed", String(musicOn));
+    const label = musicOn ? "Matikan muzik latar" : "Hidupkan muzik latar";
+    toggle.setAttribute("aria-label", label);
+    toggle.title = label;
+  };
+
+  const tryPlay = () => {
+    if (!musicOn || lessonPlaying()) return;
+    bg.play().then(renderToggle).catch(() => {});
+  };
+
+  bg.addEventListener("play", renderToggle);
+  bg.addEventListener("pause", renderToggle);
+  bg.addEventListener("error", () => toggle.remove());
+
+  // Continue from the same spot when moving to another page
+  bg.addEventListener("loadedmetadata", () => {
+    const t = parseFloat(store.get("tb-music-time", true));
+    if (t && t < bg.duration) bg.currentTime = t;
+  });
+  const savePos = () => store.set("tb-music-time", String(bg.currentTime || 0), true);
+  window.addEventListener("pagehide", savePos);
+  setInterval(() => { if (!bg.paused) savePos(); }, 2000);
+
+  bg.src = BG_SRC;
+
+  // Lesson audio pauses / resumes the background music
+  allAudio.forEach((a) => {
+    a.addEventListener("play", () => bg.pause());
+    const resume = () => setTimeout(tryPlay, 300); // small delay so switching between clips doesn't blip
+    a.addEventListener("pause", resume);
+    a.addEventListener("ended", resume);
+  });
+
+  toggle.addEventListener("click", () => {
+    musicOn = !musicOn;
+    store.set("tb-music", musicOn ? "on" : "off");
+    if (musicOn) tryPlay(); else bg.pause();
+    renderToggle();
+  });
+
+  // Try straight away (works if the browser allows it), otherwise start on the first interaction
+  renderToggle();
+  tryPlay();
+  const firstGesture = (e) => {
+    if (e.target.closest && e.target.closest(".player, .music-toggle")) return; // those handle sound themselves
+    tryPlay();
+    if (!bg.paused || !musicOn) {
+      document.removeEventListener("pointerdown", firstGesture);
+      document.removeEventListener("keydown", firstGesture);
+    }
+  };
+  document.addEventListener("pointerdown", firstGesture);
+  document.addEventListener("keydown", firstGesture);
+
   /* ---------------- Falling petals ---------------- */
   const stage = document.querySelector(".stage");
   const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
