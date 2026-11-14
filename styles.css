@@ -311,6 +311,12 @@ button { font: inherit; }
   padding: .08em .3em; margin: 0 .05em; border-radius: 14px;
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
+.ayat--practice { margin-top: 22px; }
+/* Mushaf-style text (Rasm Uthmani) */
+.ayat--full .ayat__basmalah, .ayat--full .ayat__text { font-family: "Amiri Quran", var(--font-arabic); }
+.ayat--full .ayat__text { line-height: 2.6; }
+.ayat--full .ayat__basmalah { margin-bottom: 18px; }
+.ayat--full .ayat__no { font-family: "Amiri Quran", var(--font-arabic); font-size: 1em; color: #9a7428; }
 .ayat__no { font-size: .72em; color: #b8862f; white-space: nowrap; }
 .ayat__ref { display: block; margin-top: 4px; font-size: .85rem; font-weight: 700; letter-spacing: .06em; color: var(--muted); }
 .melodi__player { display: flex; justify-content: center; margin: 26px 0 6px; }
